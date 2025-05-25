@@ -1,0 +1,13 @@
+name: "Vowel Frequency Analyzer"
+description: "Custom Action to count vowels in a file and update README.md"
+inputs:
+  file:
+    description: "Path to the text file to analyze (e.g. data.txt)"
+    required: true
+env:
+  GITHUB_USER: "${{ github.actor }}"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  args:
+    - "${{ inputs.file }}"
