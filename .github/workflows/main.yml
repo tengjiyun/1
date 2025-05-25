@@ -1,5 +1,6 @@
 name: Collaborative Workflow
-
+permissions:
+  contents: write
 on:
   push:
     branches: 
@@ -11,6 +12,9 @@ jobs:
      steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0            
+          persist-credentials: true
       - name: Update Leader Page
         if: ${{ github.actor == 'TeamLeaderUsername' }}
         run: |
